@@ -1,39 +1,28 @@
 import './css/styles.css';
 
+import API from './fetchCountries'; 
+import throttle from 'lodash.debounce'; 
 
-import debounce from 'lodash.debounce';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { fetchCountries } from './js/fetchCountries';
+const DEBOUNCE_DELAY = 300; 
+const input = document.querySelector('#search-box');
+const countryList = document.querySelector(".country-list");
+const countryDiv = document.querySelector(".country-info");
 
+input.addEventListener('input', throttle(onCountrySearch, DEBOUNCE_DELAY)); 
 
+function onCountrySearch(event) {
+    const countries = input.value.trim(); 
+    if (countries) { 
+        API.fetchCountries(countries); 
+    } else { 
+        clearer();
+    };
+};
 
-const DEBOUNCE_DELAY = 300;
-
-// function fetchCountries (searchQuery) {
-//     return fetch('https://restcountries.eu/rest/v2/name/' + searchQuery)
-//     .then(response => response.json())
-//     .catch(error => console.log(error));
-// }
-// const refs = {
-//     searchForm: document.querySelector('#search-box'),
-//     countriesList: document.querySelector('.country-list'),
-//     countryCard: document.querySelector('.country-info'),
-// };
-// console.log(refs);
-// refs.searchForm.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
-
-// function onSearch(event){
-//     event.preventDefault();
-//     const searchQuery = event.target.value;
-//     if(searchQuery === ''){
-//         return;
-//     }
-//     fetchCountries(searchQuery);
-//     console.log(searchQuery);
-// }
-
-// console.log(fetchCountries);
-
+export function clearer() { 
+    countryList.innerHTML = null; 
+    countryDiv.innerHTML = null; 
+};
 
 
 
