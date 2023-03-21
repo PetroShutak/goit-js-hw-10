@@ -27,7 +27,11 @@ ul {
 li {
   margin-bottom: 18px;
 }
-
-span {
+p {
   font-weight: bold;
+  color: blue;
+}
+span{
+  font-weight: bold;
+  color: black;
 }
