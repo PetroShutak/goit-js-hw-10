@@ -9,8 +9,10 @@ const countriesList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 const searchBox = document.querySelector('#search-box');
 const body = document.querySelector('body');
+body.style.margin = '50px 50px';
 
-body.style.backgroundImage = 'url()';
+body.style.backgroundImage =
+  'url(https://amazing-ukraine.info/wp-content/uploads/2021/04/169062270_271594621282708_6514637710719845885_n.jpg)';
 body.style.backgroundSize = 'cover';
 body.style.backgroundRepeat = 'no-repeat';
 
@@ -87,29 +89,3 @@ function countryCardMarkup(result) {
   countryInfo.innerHTML = cardMarkup;
   return cardMarkup;
 }
-
-// import './css/styles.css';
-
-// import API from './fetchCountries';
-// import throttle from 'lodash.debounce';
-
-// const DEBOUNCE_DELAY = 300;
-// const input = document.querySelector('#search-box');
-// const countryList = document.querySelector(".country-list");
-// const countryDiv = document.querySelector(".country-info");
-
-// input.addEventListener('input', throttle(onCountrySearch, DEBOUNCE_DELAY));
-
-// function onCountrySearch(event) {
-//     const countries = input.value.trim();
-//     if (countries) {
-//         API.fetchCountries(countries);
-//     } else {
-//         clearer();
-//     };
-// };
-
-// export function clearer() {
-//     countryList.innerHTML = null;
-//     countryDiv.innerHTML = null;
-// };
